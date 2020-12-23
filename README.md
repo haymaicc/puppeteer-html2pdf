@@ -1,6 +1,6 @@
 # puppeteer 模板项目
 
-该项目模板是一个基于 puppeteer 的截图工具，该项目是一个 fun 工程，借助 fun 工具进行依赖安装，上传 headless_shell 大文件到 NAS，并最终部署到阿里云的函数计算平台，作为一个 serverless 的截图服务。
+该项目模板是一个基于 puppeteer 的网页转pdf服务，该项目是一个 fun 工程，借助 fun 工具进行依赖安装，上传 headless_shell 大文件到 NAS，并最终部署到阿里云的函数计算平台，作为一个 serverless 的网页转pdf服务。
 
 **备注: 本文介绍的技巧需要 Fun 版本大于等于 3.5.0。**
 
@@ -82,18 +82,18 @@ Waiting for service puppeteer to be deployed...
         generated auto NasConfig done:  {"UserId":10003,"GroupId":10003,"MountPoints":[{"ServerAddr":"0825a4a395-rrf16.cn-hangzhou.nas.aliyuncs.com:/puppeteer","MountDir":"/mnt/auto"}]}
         Checking if nas directories /puppeteer exists, if not, it will be created automatically
         Checking nas directories done ["/puppeteer"]
-        Waiting for function html2png to be deployed...
-                Waiting for packaging function html2png code...
-                The function html2png has been packaged. A total of 7 files files were compressed and the final size was 2.56 KB
+        Waiting for function html2pdf to be deployed...
+                Waiting for packaging function html2pdf code...
+                The function html2pdf has been packaged. A total of 7 files files were compressed and the final size was 2.56 KB
                 Waiting for HTTP trigger httpTrigger to be deployed...
                 triggerName: httpTrigger
                 methods: [ 'GET' ]
-                url: https://xxxxxx.cn-hangzhou.fc.aliyuncs.com/2016-08-15/proxy/puppeteer/html2png/
+                url: https://xxxxxx.cn-hangzhou.fc.aliyuncs.com/2016-08-15/proxy/puppeteer/html2pdf/
                 Http Trigger will forcefully add a 'Content-Disposition: attachment' field to the response header, which cannot be overwritten 
                 and will cause the response to be downloaded as an attachment in the browser. This issue can be avoided by using CustomDomain.
 
                 trigger httpTrigger deploy success
-        function html2png deploy success
+        function html2pdf deploy success
 service puppeteer deploy success
 
 
@@ -111,17 +111,17 @@ Any content of the above directories changes，you need to use 'fun nas sync' to
 ## 验证
 
 ```bash
-curl https://xxxxxx.cn-hangzhou.fc.aliyuncs.com/2016-08-15/proxy/puppeteer/html2png/ > screenshot.png
+curl https://xxxxxx.cn-hangzhou.fc.aliyuncs.com/2016-08-15/proxy/puppeteer/html2pdf/ > temp.pdf
 ```
 
-如果不传递查询参数，默认会截取阿里云的首页
+如果不传递查询参数，默认会转阿里云的首页
 
 ![](https://img.alicdn.com/tfs/TB11PapuVP7gK0jSZFjXXc5aXXa-897-423.png)
 
 如果想换一个网址，可以使用如下命令格式
 
 ```bash
-curl https://xxxxxx.cn-hangzhou.fc.aliyuncs.com/2016-08-15/proxy/puppeteer/html2png/?url=http://www.alibaba.com > screenshot.png
+curl https://xxxxxx.cn-hangzhou.fc.aliyuncs.com/2016-08-15/proxy/puppeteer/html2pdf/?url=http://www.alibaba.com > temp.pdf
 ```
 
 ![](https://img.alicdn.com/tfs/TB18jypuVP7gK0jSZFjXXc5aXXa-692-327.png)
@@ -133,8 +133,8 @@ curl https://xxxxxx.cn-hangzhou.fc.aliyuncs.com/2016-08-15/proxy/puppeteer/html2
 ```bash
 $ fun local start
 using template: template.yml
-HttpTrigger httpTrigger of puppeteer/html2png was registered
-        url: http://localhost:8000/2016-08-15/proxy/puppeteer/html2png
+HttpTrigger httpTrigger of puppeteer/html2pdf was registered
+        url: http://localhost:8000/2016-08-15/proxy/puppeteer/html2pdf
         methods: [ 'GET' ]
         authType: ANONYMOUS
 
@@ -142,7 +142,7 @@ HttpTrigger httpTrigger of puppeteer/html2png was registered
 function compute app listening on port 8000!
 ```
 
-浏览器打开 http://localhost:8000/2016-08-15/proxy/puppeteer/html2png 即可。
+浏览器打开 http://localhost:8000/2016-08-15/proxy/puppeteer/html2pdf 即可。
 
 ## 参考阅读
 
