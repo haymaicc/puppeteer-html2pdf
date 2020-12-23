@@ -1,7 +1,7 @@
 {
-  "name": "puppeteer-example",
+  "name": "puppeteer",
   "version": "1.0.0",
-  "description": "该项目模板是一个基于 puppeteer 的截图工具，该项目是一个 fun 工程，借助 fun 工具进行依赖安装，上传 headless_shell 大文件到 OSS，并最终部署到阿里云的函数计算平台，作为一个 serverless 的截图服务。",
+  "description": "该项目模板是一个基于 puppeteer 的网页保存PDF程序，该项目是一个 fun 工程，借助 fun 工具进行依赖安装，上传 headless_shell 大文件到 OSS，并最终部署到阿里云的函数计算平台，作为一个 serverless 的网页保存PDF程序。",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
