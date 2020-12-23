@@ -4,9 +4,9 @@ Resources:
   puppeteer:
     Type: 'Aliyun::Serverless::Service'
     Properties:
-      Description: helloworld
+      Description: 网页转PDF
       NasConfig: Auto
-    html2png:
+    html2pdf:
       Type: 'Aliyun::Serverless::Function'
       Properties:
         Handler: index.handler
